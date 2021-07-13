@@ -69,19 +69,15 @@ minikube service nginxsvc
 
  https://github.com/dileepbg/Devopstest/blob/main/screenshots/minikube_service_nginxsvc.png
 
-### weatherforcast (below screen shots are captured only for https)
+### All Endpoints access (With https)
 
- https://github.com/dileepbg/Devopstest/blob/main/screenshots/weatherforcast.png
-
-
-### weatherforcast/stats
-
- https://github.com/dileepbg/Devopstest/blob/main/screenshots/weatherforcast_stats.png
+ https://github.com/dileepbg/Devopstest/blob/main/screenshots/All_endpoints_https.png
 
 
-### weatherforcast/fetch
+### All Endpoints access (With http)
 
- https://github.com/dileepbg/Devopstest/blob/main/screenshots/weatherforcast_fetch.png
+ https://github.com/dileepbg/Devopstest/blob/main/screenshots/All_endpoints_http.png
+
 
 
 
