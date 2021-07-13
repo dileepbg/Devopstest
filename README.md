@@ -63,6 +63,27 @@ kubectl apply -f nginx_deploy.yaml
 minikube service nginxsvc
 
 ```
-![Screenshot] (screenshots/minikube_service_nginxsvc.png)
+# Screen Shots
+
+### minikube service nginxsvc
+
+ https://github.com/dileepbg/Devopstest/blob/main/screenshots/minikube_service_nginxsvc.png
+
+### weatherforcast (below screen shots are captured only for https)
+
+ https://github.com/dileepbg/Devopstest/blob/main/screenshots/weatherforcast.png
+
+
+### weatherforcast/stats
+
+ https://github.com/dileepbg/Devopstest/blob/main/screenshots/weatherforcast_stats.png
+
+
+### weatherforcast/fetch
+
+ https://github.com/dileepbg/Devopstest/blob/main/screenshots/weatherforcast_fetch.png
+
+
+
 
 
