@@ -13,29 +13,16 @@ Steps to run the App locally using minikube.
 ## Steps for creating kubernetes components
 - Precondition: Make sure to install all the above mnetioned tools
 
-Clone the repo from the below url
+### Clone the repo from the below url
+https://github.com/dileepbg/Devopstest.git
 
- This Repo contains required minifest files for both nginx and web app to create respective k8s components.
+ This Repo contains required manifest files for both nginx and web app to create respective k8s components.
 
  Customised docker images are built locally and pushed to Docker Hub ( Docker files are avaialable for reference )
 
+- start the minikube cluster by giving below command
+  - minikube start
 
-
- 	# The CName used here is specific to the service specified in nginx-app.yaml.
-	openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/nginx.key -out /tmp/nginx.crt -subj "/CN=nginxsvc/O=nginxsvc"
-
-	kubectl create secret tls nginxsecret --key /tmp/nginx.key --cert /tmp/nginx.crt
-
-	kubectl apply -f nginx_svc.yaml
-
-	kubectl get svc
-
-	Get the clusterIP of nginx svc and update this IP in webapp_deploy.yaml for NGINX env value.
-
-	kubectl apply -f webapp_deploy.yaml
-
-	2 pods will be created, Get the IP's of nothe pods and update the IP in upstream block in default.conf under nginx folder
-
-	kubectl create configmap nginxconfigmap --from-file=default.conf
-
-	kubectl apply -f nginx_deploy.yaml
+- Create certificates to configure https communication in nginx  (The CName used here is specific to the service specified in nginx_svc.yaml)
+ 
+	- openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/nginx.key -out /tmp/nginx.crt -subj "/CN=nginxsvc/O=nginxsvc"
