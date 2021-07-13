@@ -26,7 +26,7 @@ spec:
         name: dileep-repo-01-njw9h
         env:
           - name: "NGINX"
-            value: "http://10.96.132.110:80/static.json"
+            value: "http://10.105.236.254:80/static.json"
         resources: {}
         ports:
           - containerPort: 5001

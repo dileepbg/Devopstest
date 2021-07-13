@@ -21,8 +21,48 @@ https://github.com/dileepbg/Devopstest.git
  Customised docker images are built locally and pushed to Docker Hub ( Docker files are avaialable for reference )
 
 - start the minikube cluster by giving below command
-  - minikube start
+  -  ```minikube start```
 
 - Create certificates to configure https communication in nginx  (The CName used here is specific to the service specified in nginx_svc.yaml)
- 
-	- openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/nginx.key -out /tmp/nginx.crt -subj "/CN=nginxsvc/O=nginxsvc"
+	-  ``` openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/nginx.key -out /tmp/nginx.crt -subj "/CN=nginxsvc/O=nginxsvc"  ```
+
+- Give Below commands to create Secret and nginx service
+```
+kubectl create secret tls nginxsecret --key /tmp/nginx.key --cert /tmp/nginx.crt
+kubectl apply -f nginx_svc.yaml
+kubectl get svc
+
+```
+- Get the clusterIP of nginx svc and update this IP in webapp_deploy.yaml for NGINX env value and create webapp deployment by giving below commands ( make sure to nagivate to respective folder)
+
+```
+kubectl apply -f webapp_deploy.yaml
+kubectl get po -o wide
+
+```
+
+- 2 pods will be created, Get the IP's of bote pods and update the IP in upstream block in default.conf under nginx folder.
+
+```
+upstream webapp {
+         server 172.17.0.4:5001;
+         server 172.17.0.3:5001;
+}
+```
+- Now create config map and nginx deployment (navigate to nginx folder)
+
+```
+kubectl create configmap nginxconfigmap --from-file=default.conf
+kubectl apply -f nginx_deploy.yaml
+
+```
+- Now Open the cluster in Lens IDE and check all the pods and services are healthy.
+
+- Now give below command to access to application from localhost
+```
+minikube service nginxsvc
+
+```
+![Screenshot] (screenshots/minikube_service_nginxsvc.png)
+
+
